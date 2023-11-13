@@ -3,6 +3,7 @@
 #' @param X A matrix users aimed to add signal-to-noise ratio.
 #' @param SNR Signal-to-noise ratio.
 #' @return A matrix with specified signal-to-noise ratio.
+#'
 #' @importFrom MASS ginv
 #' @importFrom stats rbinom rnorm sd
 

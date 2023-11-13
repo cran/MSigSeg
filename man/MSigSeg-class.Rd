@@ -3,20 +3,20 @@
 \docType{class}
 \name{MSigSeg-class}
 \alias{MSigSeg-class}
-\title{An S4 class to encapsulation the result of changepoint analysis.}
+\title{An S4 class to encapsulation the result of breakpoints analysis.}
 \description{
-An S4 class to encapsulation the result of changepoint analysis.
+An S4 class to encapsulation the result of breakpoints analysis.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{data.input}}{An data.frame/matrix containing the data within which you wish to find common change points. Each column is considered a separate signal.}
+\item{\code{data.input}}{An data.frame/matrix containing the data to be segmented. Each column stores a signal.}
 
 \item{\code{data.output}}{A matrix containing the input data which has been smoothed.}
 
-\item{\code{lambda}}{A numeric containing penalty coefficient to prevent over fitting.}
+\item{\code{lambda}}{A penalty term, small value leads to large number of breakpoints, and vice versa.}
 
-\item{\code{brkps}}{A vector containing the locations of common change points.}
+\item{\code{brkps}}{A vector containing the locations of common breakpoints.}
 
 \item{\code{fmin}}{A numeric containing the optimal numerical value calculated.}
 

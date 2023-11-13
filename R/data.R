@@ -1,14 +1,16 @@
-#' A data set used for testing.
+#' A simulated data set used for testing.
 #'
-#' @name PELT_test
+#' @name data_test
 #' @docType data
 #' @format A matrix with 1000 rows and 20 columns.
 #' @importFrom MASS ginv
 #' @importFrom stats rbinom rnorm sd
+#' @examples
+#' data("data_test",package = "MSigSeg")
 
-PELT_test <- matrix(0,1000,20)
+data_test <- matrix(0,1000,20)
 
-M <- PELT_test
+M <- data_test
 p <- 0.01
 m <- dim(M)[1]
 n <- dim(M)[2]
@@ -31,4 +33,47 @@ noise_variance = signal_power/(10^(SNR/10))
 NOISE=as.numeric(sqrt(noise_variance) %*% ginv(t(apply(NOISE,2,sd))))*NOISE
 Y=X+NOISE
 
-PELT_test <- Y
+data_test <- Y
+
+
+#' influenza  data set from CDC used as an example.
+#'
+#' @name NCHSData
+#' @docType data
+#' @format A matrix with 52 rows and 10 columns.
+#' @examples
+#' data("NCHSData",package = "MSigSeg")
+"NCHSData"
+
+
+#' A stock data set used as an example.
+#'
+#' @name stock
+#' @docType data
+#' @format A data.frame with 757 rows and 488 columns.
+#' @examples
+#' data("stock",package = "MSigSeg")
+"stock"
+
+
+#' A chromosome sequencing data set used as an example.
+#'
+#' @name T16P
+#' @docType data
+#' @format A data.frame with 2928 rows and 16 columns.
+#' @references Navin N, Kendall J, Troge J, et al. Tumour evolution inferred by single-cell sequencing. Nature. 2011;472(7341):90-94. doi:10.1038/nature09807
+#' @examples
+#' data("T16P",package = "MSigSeg")
+"T16P"
+
+
+#' A chromosome sequencing data set used as an example.
+#'
+#' @name T16M
+#' @docType data
+#' @format A data.frame with 2928 rows and 22 columns.
+#' @references Navin N, Kendall J, Troge J, et al. Tumour evolution inferred by single-cell sequencing. Nature. 2011;472(7341):90-94. doi:10.1038/nature09807
+#' @examples
+#' data("T16M",package = "MSigSeg")
+"T16M"
+

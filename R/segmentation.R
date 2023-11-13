@@ -1,22 +1,22 @@
 #' @title Detecting common change points for multiple signals.
-#' @description Calculates the optimal positioning and number of common change points for multiple signals.
+#' @description Calculates the optimal positioning and number of common breakpoints for multiple signals.
 #' @details This function uses modified PELT method to find optimal common change points for multiple signals.
-#' @param Y An data.frame/matrix containing the data within which you wish to find common change points. Each column is considered a separate signal.
-#' @param lambda A penalty term to prevent over fitting.
+#' @param Y An data.frame/matrix containing the data to be segmented. Each column stores a signal.
+#' @param lambda A penalty term, small value leads to large number of breakpoints, and vice versa.
 #' @param flag Logical. If True then use th PELT method. If False then use the OP method.
-#' @param smooth_signals Logical. If True then smooth signals are returned.
+#' @param return_smooth_signals Logical. If True then smoothed signals are returned.
 #' @return An object of S4 class "MSigSeg"
 #'
 #' @importFrom methods new
 #' @importFrom stats rbinom rnorm sd
 #'
 #' @examples
-#' data(PELT_test)
-#' fun_segmentation_PELT(PELT_test,100)
+#' data(data_test)
+#' segmentation(data_test,100)
 #'
 #' @export
 
-fun_segmentation_PELT <- function(Y,lambda,flag=1,smooth_signals=TRUE){
+segmentation <- function(Y,lambda,flag=TRUE,return_smooth_signals=TRUE){
   if(lambda<0){
     stop("lambda must be a positive number.")
   }
@@ -78,7 +78,7 @@ fun_segmentation_PELT <- function(Y,lambda,flag=1,smooth_signals=TRUE){
   brkps <- brkps[2:length(brkps)]-1
   fmin <- f[length(f)]
 
-  if(smooth_signals==TRUE){
+  if(return_smooth_signals==TRUE){
     X <- matrix(0,n,m)
     if(is.na(brkps[1])){
       X <- matrix(1,n,1) %*% fun_colmean(Y)
